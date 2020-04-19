@@ -10,22 +10,47 @@ document.getElementsByTagName("body")[0].addEventListener("load", init());
 function init() {
     addBtnEventLstnrs();
     setTimeout(initMap, 1000);
+    onGo();
 }
 
 function addBtnEventLstnrs() {
-    let elMyLocationBtn = document.querySelector('.my-location-btn')
-    let elGoBtn = document.querySelector('.go-btn')
+    let elMyLocationBtn = document.querySelector('.my-location-btn');
+    let elGoBtn = document.querySelector('.go-btn');
+    let elLocationDisplay = document.querySelector('.copy-location');
 
     elMyLocationBtn.addEventListener('click', onUserLocation)
     elGoBtn.addEventListener('click', onGo)
+    elLocationDisplay.addEventListener('click', onCopyLocation)
+}
+
+function onCopyLocation() {
+
+    var text = document.querySelector('.location-display').innerText
+    var copyText = document.querySelector("#input");
+    copyText.value = text
+
+    copyText.select();
+    document.execCommand("copy");
 }
 
 function onMapClick(latLng) {
 
-    console.log('latLng', latLng);
+    let latLngArr = latLng.split('')
+    let latLngArrShort = latLngArr.splice(1, latLngArr.length - 2)
+    let latLngJoint = latLngArrShort.join('')
+    let latLngSplit = latLngJoint.split(', ')
 
-    // let address = getAddressFromCoord(latLng)
-    // addLocation(makeId(3), address, 'sunny')
+    let latLngObj = {
+        lat : parseFloat(latLngSplit[0]),
+        lng : parseFloat(latLngSplit[1])
+    }
+
+    let address = getAddressFromCoord(latLngObj)
+        address.then(res => {
+            addLocation(makeId(3), res, 'sunny')
+            renderLocationDeclaretion(res)
+    })
+
 }
 
 function onGo() {
@@ -38,7 +63,12 @@ function onGo() {
         .then(res => getAddressFromCoord(res))
         .then(ans => {
             addLocation(makeId(3), ans, 'sunny')
+            renderLocationDeclaretion(ans)
         })
+}
+
+function renderLocationDeclaretion(address) {
+    document.querySelector('.location-display').innerText = address;
 }
 
 function getLocationCoor(address) {
@@ -96,8 +126,7 @@ function initMap(lat = 29.558244, lng = 34.955198) {
         title: 'Marker'
     });
     map.addListener('click', function (position) {
-        console.log(position)
-        onMapClick(position, map);
+        onMapClick(position.latLng.toString(), map);
     });
 }
 
