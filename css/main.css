@@ -1,31 +1,98 @@
+@import 'helpers.css';
 
 
-.map {
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
-    display: block;
-    float: left;
+
+
+/* basics */
+
+
+* {
+    box-sizing: border-box;
 }
 
-.user-location {
-    position: absolute;
-    left: 190px;
-    top: 16px;
-    width: 10px;
-    height: 10px;
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow-x: hidden;
 }
 
-.user-location:hover {
-    cursor: pointer;
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: tomato;
 }
 
-.add-marker-label {
-    position: absolute;   
-    left: 20px;
-    top: 630px;
-    padding: 10px;
-    border-radius: 5%;
-    background-color: rgba(0, 255, 255, 0.418);
-    border: 1px solid rgb(98, 98, 98);
-    display: none;
-   }
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+ul {
+    height: 100%;
+}
+
+main {
+    text-align: center;
+}
+
+section {
+    background-color: rgb(255, 133, 111)
+}
+
+button {
+    background-color: grey; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid black;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type=text] {
+    /* width: 50%; */
+    padding: 10px 20px;
+    margin: 8px 0;
+    outline: none;
+    font-size: 16px;
+}
+
+/* design */
+
+.header-container {
+    min-height: 70px;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+.page-container {
+    height: 100%;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.location-declaration {
+    width: 100%;
+    height: 70px;
+}
+
+section.locations-list , section.map-container , section.weather-container {
+    width: 400px;
+    height: 300px;
+    margin: 10px;
+}
+
