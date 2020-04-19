@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
+
 <body>
 
-    <header class="header-container">
-        <h1>TravelTip</h1>
-    </header>
+    <div class="page-container flex column space-between justify-center">
 
-    <section class="map-container"></section>
+        <header class="header-container flex justify-center">
+            <div class="container flex space-between align-center">
+                <a class="logo" href="index.html">TravelTip</a>
+                <div class="search">
+                    <input type="text" name="search" value="Jerusalem, Israel">
+                    <button onclick="onSearch()">Go</button>
+                    <button onclick="onSearch()">My Location</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container flex column justify-center align-center">
+
+            <section class="location-declaration flex align-center justify-center space-around">
+                location declaration comes here
+                <button>Copy Location</button>
+            </section>
+
+            <div class=" flex justify-center wrap">
+                    <section class="locations-list">
+                        list comes here
+                    </section>
+
+                    <section class="map-container">
+                        map comes here
+                    </section>
+
+                    <section class="weather-container">
+                        weather comes here
+                    </section>
+            </div>
+        </main>
+
+    </div>
 
     <script src="lib/axios.js"></script>
     <script type="module" src="js/travel-tip-main.js"></script>
 </body>
+
 </html>
