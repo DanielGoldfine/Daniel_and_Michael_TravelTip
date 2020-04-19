@@ -1,7 +1,20 @@
 
 const body = document.getElementsByTagName("body")[0];
 
-body.addEventListener("load", initMap());
+body.addEventListener("load", init());
+
+function init() {
+    addBtnEventLstnrs();
+    setTimeout(initMap, 1000);
+}
+
+function addBtnEventLstnrs() {
+    let elMyLocationBtn = document.querySelector('.my-location-btn')
+    let elGoBtn = document.querySelector('.go-btn')
+
+    elMyLocationBtn.addEventListener('click', onUserLocation)
+    // elGoBtn.addEventListener('click', onGo())
+}
 
 var gTempMarkerData;
 
