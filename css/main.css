@@ -1,0 +1,31 @@
+
+
+.map {
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    display: block;
+    float: left;
+}
+
+.user-location {
+    position: absolute;
+    left: 190px;
+    top: 16px;
+    width: 10px;
+    height: 10px;
+}
+
+.user-location:hover {
+    cursor: pointer;
+}
+
+.add-marker-label {
+    position: absolute;   
+    left: 20px;
+    top: 630px;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: rgba(0, 255, 255, 0.418);
+    border: 1px solid rgb(98, 98, 98);
+    display: none;
+   }
