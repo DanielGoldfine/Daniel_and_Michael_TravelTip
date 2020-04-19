@@ -1,10 +1,6 @@
 @import 'helpers.css';
 
-
-
-
 /* basics */
-
 
 * {
     box-sizing: border-box;
@@ -40,19 +36,34 @@ main {
 section {
     background-color: rgb(255, 133, 111)
 }
+table {
+    background-color: #fff;
+}
+table th {
+    font-size: larger;
+    text-decoration: underline;
+    padding-bottom: 20px;
+}
+tr {
+    border-bottom: 1px solid grey;
+}
 
 button {
     background-color: grey; /* Green */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border: 1px solid black;
-  outline: none;
-  cursor: pointer;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid black;
+    outline: none;
+    cursor: pointer;
+}
+.table-btn {
+    padding: 5px 10px;
+    background-color: darkblue;
 }
 
 input[type=text] {
@@ -62,6 +73,7 @@ input[type=text] {
     outline: none;
     font-size: 16px;
 }
+
 
 /* design */
 
@@ -90,7 +102,7 @@ input[type=text] {
 
 section.locations-list , section.map-container , section.weather-container {
     min-width: 40%;
-    width: 400px;
+    width: 500px;
     height: 300px;
     margin: 10px;
 }

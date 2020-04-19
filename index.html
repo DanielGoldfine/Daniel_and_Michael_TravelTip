@@ -26,30 +26,56 @@
         <main class="container flex column justify-center align-center">
 
             <section class="location-declaration flex align-center justify-center space-around">
-                location declaration comes here
+                Ramat-Gan, Habonim 5
                 <button>Copy Location</button>
             </section>
 
             <div class="flex justify-center wrap">
-                    <section class="locations-list">
-                        list comes here
-                    </section>
+                <section class="locations-list">
+                    <table style="width:100%">
+                        <tr>
+                            <th>ID</th>
+                            <th>Info</th>
+                            <th>Weather</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>Ramat-Gan, Habonim 5</td>
+                            <td>Sunny</td>
+                            <td>
+                                <button class="table-btn">Delete</button>
+                                <button class="table-btn">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>Ramat-Gan, Habonim 5</td>
+                            <td>Sunny</td>
+                            <td>
+                                <button class="table-btn">Delete</button>
+                                <button class="table-btn">Update</button>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
 
-                    <section class="map-container">
-                            <div class="map" style="width: 100%; height: 100%;">
+                <section class="map-container">
+                    <div class="map" style="width: 100%; height: 100%;">
                     </div>
-                    
-                    </section>
 
-                    <section class="weather-container">
-                        weather comes here
-                    </section>
+                </section>
+
+                <section class="weather-container">
+                    weather comes here
+                </section>
             </div>
         </main>
 
     </div>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTMK9Yn_V-K4Y-_Y8qsfAZ0hvC9BSt5w"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTMK9Yn_V-K4Y-_Y8qsfAZ0hvC9BSt5w"></script>
     <script type="module" src="js/travel-tip-main.js"></script>
     <script src="lib/axios.js"></script>
 </body>
