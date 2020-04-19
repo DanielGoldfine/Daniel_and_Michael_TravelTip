@@ -36,7 +36,13 @@
                     </section>
 
                     <section class="map-container">
-                        map comes here
+                        <section class="map-container">
+                            <div class="map" style="width: 80%; height: 750px;">
+                    </div>
+                    <div class="user-location" onclick="onUserLocation()">
+                        <img src="img/mylocation.png" alt="">
+                    </div>
+                    </section>
                     </section>
 
                     <section class="weather-container">
@@ -47,8 +53,9 @@
 
     </div>
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTMK9Yn_V-K4Y-_Y8qsfAZ0hvC9BSt5w&callback=initMap"></script>
+    <script src="js/travel-tip-main.js"></script>
     <script src="lib/axios.js"></script>
-    <script type="module" src="js/travel-tip-main.js"></script>
 </body>
 
 </html>
