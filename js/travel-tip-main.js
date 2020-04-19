@@ -1,7 +1,9 @@
+import { locationPreview } from './cmps/location-preview.js';
 
 const body = document.getElementsByTagName("body")[0];
 
 body.addEventListener("load", init());
+
 
 function init() {
     addBtnEventLstnrs();
@@ -13,7 +15,19 @@ function addBtnEventLstnrs() {
     let elGoBtn = document.querySelector('.go-btn')
 
     elMyLocationBtn.addEventListener('click', onUserLocation)
-    // elGoBtn.addEventListener('click', onGo())
+    elGoBtn.addEventListener('click', addLocation)
+}
+
+function addLocation() {
+    debugger
+    locationPreview('3231', 'ramat-gam', 'sunny', onDeleteItem(), onUpdateItem())
+}
+
+function onDeleteItem() {
+    // console.log(this);
+}
+function onUpdateItem() {
+    // console.log(this);
 }
 
 var gTempMarkerData;
@@ -38,7 +52,7 @@ function initMap(lat = 29.558244, lng = 34.955198) {
         map,
         title: 'Marker'
     });
-    map.addListener('click', function(position) {
+    map.addListener('click', function (position) {
         // alert(position.latLng)
         onAddMarker(position.latLng, map);
     });
