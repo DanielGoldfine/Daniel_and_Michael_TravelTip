@@ -1,6 +1,6 @@
 
 
-function makeId(length) {
+export function makeId(length) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 

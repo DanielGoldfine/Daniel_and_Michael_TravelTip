@@ -1,4 +1,5 @@
 import { locationPreview } from './cmps/location-preview.js';
+import { makeId } from './util.js';
 
 const body = document.getElementsByTagName("body")[0];
 
@@ -15,24 +16,42 @@ function addBtnEventLstnrs() {
     let elGoBtn = document.querySelector('.go-btn')
 
     elMyLocationBtn.addEventListener('click', onUserLocation)
-    elGoBtn.addEventListener('click', addLocation)
+    elGoBtn.addEventListener('click', onGo)
 }
 
-function addLocation() {
-    debugger
-    locationPreview('3231', 'ramat-gam', 'sunny', onDeleteItem(), onUpdateItem())
+function onGo() {
+    
+let address = document.querySelector('input[name = "search"]').value;
+
+var coord = getLocationCoor(address)
+
+setLocation(lat, lng)
+getWeather(lat, lng)
+
+}
+
+
+
+
+function addLocation(id, address, weather) {
+
+    const elTBody = document.querySelector('.table-body');
+
+    const locationItem = new locationPreview(id, address, weather, onDeleteItem, onUpdateItem)
+    console.log(locationItem);
+
+    const elRow = locationItem.render();
+    console.log(elRow)
+    elTBody.appendChild(elRow);
 }
 
 function onDeleteItem() {
-    // console.log(this);
+    console.log('delete');
 }
 function onUpdateItem() {
-    // console.log(this);
+    console.log('update');
 }
 
-var gTempMarkerData;
-
-var gLocations = [];
 
 function initMap(lat = 29.558244, lng = 34.955198) {
 
@@ -54,18 +73,7 @@ function initMap(lat = 29.558244, lng = 34.955198) {
     });
     map.addListener('click', function (position) {
         // alert(position.latLng)
-        onAddMarker(position.latLng, map);
-    });
-}
-
-function onAddMarker(latLng, map) {
-
-    gLocations.push(latLng);
-    console.log(latLng)
-
-    var marker = new google.maps.Marker({
-        pos: latLng,
-        map: map
+        setLocation(position.latLng, map);
     });
 }
 
@@ -76,3 +84,17 @@ function onUserLocation() {
 function goToUserLocation(position) {
     initMap(position.coords.latitude, position.coords.longitude)
 }
+
+
+
+
+// function onAddMarker(latLng, map) {
+
+//     gLocations.push(latLng);
+//     console.log(latLng)
+
+//     var marker = new google.maps.Marker({
+//         pos: latLng,
+//         map: map
+//     });
+// }
