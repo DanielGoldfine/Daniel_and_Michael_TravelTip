@@ -17,8 +17,6 @@ html {
 
 body {
     margin: 0;
-    width: 100vw;
-    height: 100vh;
     background-color: tomato;
 }
 
@@ -91,6 +89,7 @@ input[type=text] {
 }
 
 section.locations-list , section.map-container , section.weather-container {
+    min-width: 40%;
     width: 400px;
     height: 300px;
     margin: 10px;
