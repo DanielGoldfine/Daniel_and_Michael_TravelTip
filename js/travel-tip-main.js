@@ -1,9 +1,10 @@
 import { locationPreview } from './cmps/location-preview.js';
 import { makeId } from './util.js';
 
-const body = document.getElementsByTagName("body")[0];
 
-body.addEventListener("load", init());
+
+const GOOGLE_API_KEY = 'AIzaSyCX5xnl43gRFcQsE-LEyVOFsMEqJ8fe17Y'
+document.getElementsByTagName("body")[0].addEventListener("load", init());
 
 
 function init() {
@@ -19,18 +20,41 @@ function addBtnEventLstnrs() {
     elGoBtn.addEventListener('click', onGo)
 }
 
+function onMapClick(latLng) {
+
+    console.log('latLng', latLng);
+
+    // let address = getAddressFromCoord(latLng)
+    // addLocation(makeId(3), address, 'sunny')
+}
+
 function onGo() {
-    
-let address = document.querySelector('input[name = "search"]').value;
 
-var coord = getLocationCoor(address)
+    let address = document.querySelector('input[name = "search"]').value;
 
-setLocation(lat, lng)
-getWeather(lat, lng)
+
+
+    var coord = getLocationCoor(address)
+        .then(res => getAddressFromCoord(res))
+        .then(ans => {
+            addLocation(makeId(3), ans, 'sunny')
+        })
+}
+
+function getLocationCoor(address) {
+
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address},+CA&key=${GOOGLE_API_KEY}`)
+        .then(ans => ans.data)
+        .then(data => data.results)
+        .then(res => res[0].geometry.location)
 
 }
 
-
+function getAddressFromCoord(coord) {
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coord.lat},${coord.lng}&key=${GOOGLE_API_KEY}`)
+        .then(res => res.data)
+        .then(res => res.results[0].formatted_address)
+}
 
 
 function addLocation(id, address, weather) {
@@ -38,18 +62,18 @@ function addLocation(id, address, weather) {
     const elTBody = document.querySelector('.table-body');
 
     const locationItem = new locationPreview(id, address, weather, onDeleteItem, onUpdateItem)
-    console.log(locationItem);
+
 
     const elRow = locationItem.render();
-    console.log(elRow)
+
     elTBody.appendChild(elRow);
 }
 
 function onDeleteItem() {
-    console.log('delete');
+
 }
 function onUpdateItem() {
-    console.log('update');
+
 }
 
 
@@ -72,8 +96,8 @@ function initMap(lat = 29.558244, lng = 34.955198) {
         title: 'Marker'
     });
     map.addListener('click', function (position) {
-        // alert(position.latLng)
-        setLocation(position.latLng, map);
+        console.log(position)
+        onMapClick(position, map);
     });
 }
 
